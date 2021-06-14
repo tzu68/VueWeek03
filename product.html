@@ -169,7 +169,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" @click="closeModal">取消</button>
-                        <button type="button" class="btn btn-primary" @click="addtempProduct">
+                        <button type="button" class="btn btn-primary" @click="edit">
                         <span v-if="isNew">新增產品</span>
                         <span v-else="isNew">修改產品</span>
                             
@@ -219,12 +219,12 @@
             openModal(isNew, id) {
                 myModal.show();
                 if (isNew == "new") {
-                    this.isNew = true;
-                    this.tempProduct = {};
-                    this.tempProduct.imagesUrl = [];
+                    // this.isNew = true;
+                    // this.tempProduct = {};
+                    // this.tempProduct.imagesUrl = [];
 
                 } else if (isNew == "edit") {
-                    this.isNew = false;
+                    // this.isNew = false;
                     alert(`修改產品`);
                 }
             },
