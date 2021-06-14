@@ -204,6 +204,7 @@
                     .then(res => {
                         if (res.data.success) {
                             this.list = JSON.parse(JSON.stringify(res.data.products));
+                            console.log(res);
                         } else {
                             alert(res.data.message);
                         }
