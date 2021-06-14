@@ -93,7 +93,7 @@
             </div>
         </div>
 
-        <!-- Modal -->
+        <!-- Modal開始 -->
 
         <div class="modal fade " id="productModal" tabindex="-1" aria-labelledby="productModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered modal-xl">
@@ -102,7 +102,6 @@
                         <h5 class="modal-title" id="productModalLabel">
                             <span v-if="isNew">新增產品內容</span>
                             <span v-else="isNew">編輯產品內容</span>
-
                         </h5>
                     </div>
                     <div class="modal-body container-fluid row w-100">
@@ -169,7 +168,10 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" @click="closeModal">取消</button>
-                        <button type="button" class="btn btn-primary" @click="closeModal">確定</button>
+                        <button type="button" class="btn btn-primary" @click="closeModal">            
+                            <span v-if="isNew">確認新增</span>
+                            <span v-else="isNew">確認編輯</span>
+                        </button>
                     </div>
                 </div>
 
@@ -177,6 +179,27 @@
 
         </div>
 
+        <div class="modal fade " id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-sm">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="deleteModalLabel">
+                            刪除產品
+                        </h5>
+                    </div>
+                    <div class="modal-body container-fluid row w-100">
+                        被刪除的產品將無法復原
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" @click="closeModal">取消</button>
+                        <button type="button" class="btn btn-primary" @click="closeModal">確定</button>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+        <!-- Modal結束 -->
 
     </div>
 
@@ -214,15 +237,21 @@
                     })
             },
             openModal(isNew, id) {
-                productModal.show();
+
                 if (isNew == "new") {
                     this.isNew = true;
+                    productModal.show();
                 } else if (isNew == "edit") {
                     this.isNew = false;
+                    productModal.show();
+                } else if (isNew == "delete") {
+                    this.isNew = false;
+                    deleteModal.show();
                 }
             },
             closeModal() {
                 productModal.hide();
+                deleteModal.hide();
             },
             addtempProduct() {
                 const newItem = {
