@@ -227,7 +227,7 @@
             },
             addNewItem() {
 
-                axios.post(`${this.website.url}/api/${this.website.path}/admin/product`)
+                axios.post(`${this.website.url}/api/${this.website.path}/admin/product`, this.newItem)
                     .then((res) => {
                         console.log("新增產品回傳值", res);
                     })
