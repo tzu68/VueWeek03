@@ -226,6 +226,7 @@
                 myModal.hide();
             },
             addNewItem() {
+
                 axios.post(`${this.website.url}/api/${this.website.path}/admin/product`)
                     .then((res) => {
                         console.log("新增產品回傳值", res);
@@ -235,6 +236,11 @@
             },
         },
         mounted() {
+            const token = document.cookie.replace(/(?:(?:^|.*;\s*)hexToken\s*=\s*([^;]*).*$)|^.*$/, '$1');
+            console.log("token", token);
+
+            axios.defaults.headers.common['Authorization'] = token;
+
             this.getData();
             myModal = new bootstrap.Modal(document.querySelector('#modal'))
             console.log("初始化");
