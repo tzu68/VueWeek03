@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="CSS/bootstrap.min.css">
+    <link rel="stylesheet" href="CSS/mystyle">
+
+    <script src="js/jquery-3.5.1.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://unpkg.com/vue@next"></script>
+</head>
+
+<style>
+    .container {
+        position: absolute;
+        top: 50px;
+        bottom: 50px;
+        left: 50px;
+        right: 50px;
+        border-radius: 50px;
+    }
+    
+    .card {
+        position: relative;
+        top: 30vh;
+    }
+</style>
+
+<body>
+
+    <div id="app">
+
+        <div class="row h-50 m-auto">
+            <div class="col-8 col-lg-4 h-100 text-center m-auto">
+                <div class="card text-white bg-secondary">
+                    <div class="card-header">
+                        請輸入帳號密碼
+                    </div>
+                    <div class="card-body bg-white text-black-50">
+                        <div class="form-group row mb-2 d-flex justify-content-around align-items-baseline">
+                            <div class="col-4 col-md-3">
+                                <label for="userName">帳號</label>
+                            </div>
+                            <div class="col-8 col-md-9">
+                                <input type="text" class="col-8 form-control" id="userName" v-model="username">
+                            </div>
+                        </div>
+                        <div class="form-group row mb-2 d-flex justify-content-around align-items-baseline">
+                            <div class="col-4 col-md-3 text-black-50">
+                                <label for="userPassword">密碼</label>
+                            </div>
+                            <div class="col-8 col-md-9">
+                                <input type="password" class="col-8 form-control" id="userPassword" v-model="password">
+                            </div>
+                        </div>
+                        <div class="mt-4 mb-2 row">
+                            <div class="col-12">
+                                <button type="button" class="btn btn-outline-secondary w-100" @click="login">送出</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+
+</body>
+<script>
+    const obj = Vue.createApp({
+        data() {
+            return {
+                website: {
+                    url: 'https://vue3-course-api.hexschool.io',
+                    path: 'floya'
+                },
+                username: "",
+                password: "",
+            }
+        },
+        methods: {
+            login() {
+                const userInfo = {
+                    username: this.username,
+                    password: this.password
+                }
+
+                console.log(userInfo);
+
+                axios.post(`${this.website.url}/admin/signin`, userInfo)
+                    .then((res) => {
+                        console.log(res);
+
+                        if (res.data.success) {
+                            const {
+                                token,
+                                expired
+                            } = res.data;
+                            console.log(expired, new Date(expired));
+                            document.cookie = `hexToken=${token};expires=${new Date(expired)}; path=/`;
+                            console.log("document.cookie", document.cookie);
+                            alert("登入成功");
+                        }
+
+
+                    })
+
+            },
+
+        },
+
+        created() {
+            const loginBtn = document.querySelector("#loginBtn")
+        }
+
+
+    }).mount("#app");
+</script>
+
+</html>

@@ -1,0 +1,27 @@
+* {
+    padding: 0px;
+    margin: 0px;
+    font-family: 'Noto Sans TC', sans-serif;
+}
+
+body {
+    background-image: url(../img/bg.jpg);
+    background-size: cover;
+    background-position: center center;
+}
+
+.container {
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+.mytable tr:nth-child(odd) {
+    background-color: #ffe8e8;
+}
+
+.mytable tr:nth-child(even) {
+    background-color: #ffffff;
+}
+
+.modal-dialog {
+    width: 75vh !important;
+}
