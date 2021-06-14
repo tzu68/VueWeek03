@@ -207,6 +207,7 @@
             getData() {
                 axios.get(`${this.website.url}/api/${this.website.path}/products`)
                     .then(res => {
+                        console.log("獲取資料");
                         if (res.data.success) {
 
                             console.log(res);
@@ -236,6 +237,7 @@
         mounted() {
             this.getData();
             myModal = new bootstrap.Modal(document.querySelector('#modal'))
+            console.log("初始化");
         }
     }).mount("#app ");
 </script>
