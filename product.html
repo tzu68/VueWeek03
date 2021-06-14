@@ -245,7 +245,7 @@
                     this.tempProduct = item;
                     this.isNew = false;
                     console.log("item", item);
-                    console.log("tempProduct", tempProduct);
+                    console.log("tempProduct", this.tempProduct);
 
                     productModal.show();
 
@@ -256,24 +256,7 @@
             upProductData() {
 
             },
-            addtempProduct() {
-                const newItem = {
-                    data: this.tempProduct
-                }
 
-                axios.post(`${this.website.url}/api/${this.website.path}/admin/product`, newItem)
-                    .then((res) => {
-                        if (res.data.success) {
-                            this.getData();
-                        } else {
-                            alert(res.data.message);
-                        }
-                    }).catch((err) => {
-                        console.log(err);
-                    })
-                productModal.hide();
-                console.log(this.tempProduct);
-            },
         },
         mounted() {
             const token = document.cookie.replace(/(?:(?:^|.*;\s*)hexToken\s*=\s*([^;]*).*$)|^.*$/, '$1');
