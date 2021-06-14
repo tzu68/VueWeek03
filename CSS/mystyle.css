@@ -22,6 +22,10 @@ body {
     background-color: #ffffff;
 }
 
-.modal-dialog {
-    width: 75vh !important;
+.modal .modal-dialog {
+    width: 1920px !important;
+}
+
+ul {
+    list-style: none;
 }
