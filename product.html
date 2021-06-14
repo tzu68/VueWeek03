@@ -168,7 +168,7 @@
 
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="Modal">取消</button>
                         <button type="button" class="btn btn-primary" @click="upProductData">確認</button>
                     </div>
                 </div>
@@ -177,27 +177,7 @@
 
         </div>
 
-        <div class="modal fade " ref="delProductModal" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered modal-sm">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="deleteModalLabel">
-                            刪除產品
-                        </h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body container-fluid row w-100">
-                        被刪除的產品將無法復原
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
-                        <button type="button" class="btn btn-primary">確定</button>
-                    </div>
-                </div>
 
-            </div>
-
-        </div>
         <!-- Modal結束 -->
 
     </div>
@@ -239,12 +219,10 @@
 
                 if (isNew == "new") {
                     this.isNew = true;
-                    alert(this.isNew);
+
                     productModal.show();
                 } else if (isNew == "edit") {
 
-                    this.tempProduct = {...item
-                    };
                     this.isNew = false;
 
                     productModal.show();
