@@ -203,7 +203,7 @@
                 axios.get(`${this.website.url}/api/${this.website.path}/products`)
                     .then(res => {
                         if (res.data.success) {
-                            this.list = JSON.parse(JSON.stringify(res.data.products));
+                            this.products = JSON.parse(JSON.stringify(res.data.products));
                             console.log(res);
                         } else {
                             alert(res.data.message);
