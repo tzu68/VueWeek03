@@ -213,19 +213,9 @@
                         console.log(err);
                     })
             },
-            openModal(isNew, id) {
+            openModal(isNew) {
                 myModal.show();
-                if (isNew == "new") {
-                    // this.isNew = true;
-                    // this.tempProduct = {};
-                    // this.tempProduct.imagesUrl = [];
-
-                } else if (isNew == "edit") {
-                    // this.isNew = false;
-                    alert(`修改產品`);
-                }
             },
-
             closeModal() {
                 myModal.hide();
             },
