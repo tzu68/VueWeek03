@@ -95,7 +95,7 @@
 
         <!-- Modal -->
 
-        <div class="modal fade " id="modal" tabindex="-1" aria-labelledby="productModalLabel" aria-hidden="true">
+        <div class="modal fade " id="productModal" tabindex="-1" aria-labelledby="productModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered modal-xl">
                 <div class="modal-content mx-auto w-100">
                     <div class="modal-header">
@@ -213,11 +213,16 @@
                         console.log(err);
                     })
             },
-            openModal(isNew) {
-                myModal.show();
+            openModal(isNew, id) {
+                productModal.show();
+                if (isNew == "new") {
+                    this.isNew = true;
+                } else if (isNew == "edit") {
+                    this.isNew = false;
+                }
             },
             closeModal() {
-                myModal.hide();
+                productModal.hide();
             },
             addtempProduct() {
                 const newItem = {
@@ -234,7 +239,7 @@
                     }).catch((err) => {
                         console.log(err);
                     })
-                myModal.hide();
+                productModal.hide();
                 console.log(this.tempProduct);
             },
         },
@@ -249,7 +254,7 @@
             //只需要打一次，以後只要有請求就會自動帶入
             axios.defaults.headers.common['Authorization'] = token;
 
-            myModal = new bootstrap.Modal(document.querySelector('#modal'));
+            productModal = new bootstrap.Modal(document.querySelector('#productModal'));
             this.getData();
         }
     }).mount("#app ");
