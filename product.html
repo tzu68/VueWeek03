@@ -29,7 +29,7 @@
                 <div class="row my-3">
                     <div class="col-8"></div>
                     <div class="col-4 mr-0">
-                        <button type="button" class="btn btn-secondary d-inline-block w-100 p-2" @click="openModal()">新增產品</button>
+                        <button type="button" class="btn btn-secondary d-inline-block w-100 p-2" @click="openModal('new')">新增產品</button>
                     </div>
 
                 </div>
@@ -81,7 +81,7 @@
 
 
                             <td class="col-2">
-                                <button type="button" class="btn btn-outline-secondary d-inline-block btn-sm mx-2">編輯</button>
+                                <button type="button" class="btn btn-outline-secondary d-inline-block btn-sm mx-2" @click="openModal('edit')">編輯</button>
                                 <button type="button" class="btn btn-outline-primary d-inline-block btn-sm mx-2">刪除</button>
                             </td>
                         </tr>
@@ -99,7 +99,11 @@
             <div class="modal-dialog modal-dialog-centered modal-xl">
                 <div class="modal-content mx-auto w-100">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="productModalLabel">新增產品內容</h5>
+                        <h5 class="modal-title" id="productModalLabel">
+                            <span v-if="isNew">新增產品內容</span>
+                            <span v-else="isNew">編輯產品內容</span>
+
+                        </h5>
                     </div>
                     <div class="modal-body container-fluid row w-100">
 
@@ -193,25 +197,30 @@
 
                 },
                 tempImgAry: "",
+                isNew: true,
             }
         },
         methods: {
             getData() {
                 axios.get(`${this.website.url}/api/${this.website.path}/products`)
                     .then(res => {
-                        console.log("獲取資料");
                         if (res.data.success) {
-
-                            console.log(res);
                             this.list = JSON.parse(JSON.stringify(res.data.products));
-
-                            console.log(this.list);
+                        } else {
+                            alert(res.data.message);
                         }
 
+                    }).catch((err) => {
+                        console.log(err);
                     })
             },
-            openModal() {
+            openModal(isNew, id) {
                 myModal.show();
+                if (isNew == "new") {
+                    alert("新增產品");
+                } else if (isNew == "edit") {
+                    alert("修改產品");
+                }
             },
 
             closeModal() {
@@ -224,7 +233,13 @@
 
                 axios.post(`${this.website.url}/api/${this.website.path}/admin/product`, newItem)
                     .then((res) => {
-                        console.log("新增產品回傳值", res);
+                        if (res.data.success) {
+                            this.getData();
+                        } else {
+                            alert(res.data.message);
+                        }
+                    }).catch((err) => {
+                        console.log(err);
                     })
                 myModal.hide();
                 console.log(this.tempProduct);
@@ -238,7 +253,9 @@
                 window.location = `index.html`;
             }
 
+            //只需要打一次，以後只要有請求就會自動帶入
             axios.defaults.headers.common['Authorization'] = token;
+
             myModal = new bootstrap.Modal(document.querySelector('#modal'));
             this.getData();
         }
