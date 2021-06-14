@@ -185,7 +185,9 @@
             //只需要打一次，以後只要有請求就會自動帶入
             axios.defaults.headers.common['Authorization'] = token;
 
-            delProductModal = new bootstrap.Modal(document.querySelector('#delProductModal'));
+            delProductModal = new bootstrap.Modal(document.getElementById('delProductModal'), {
+                keyboard: false
+            });
             this.getData();
         }
     }).mount("#app ");
