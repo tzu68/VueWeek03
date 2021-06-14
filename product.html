@@ -81,8 +81,8 @@
 
 
                             <td class="col-2">
-                                <button type="button" class="btn btn-outline-secondary d-inline-block btn-sm mx-2" @click="openModal('edit')">編輯</button>
-                                <button type="button" class="btn btn-outline-primary d-inline-block btn-sm mx-2" @click="openModal('delete')">刪除</button>
+                                <button type="button" class="btn btn-outline-secondary d-inline-block btn-sm mx-2" @click="openModal('edit',item)">編輯</button>
+                                <button type="button" class="btn btn-outline-primary d-inline-block btn-sm mx-2">刪除</button>
                             </td>
                         </tr>
 
@@ -188,7 +188,7 @@
                         被刪除的產品將無法復原
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary">取消</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
                         <button type="button" class="btn btn-primary">確定</button>
                     </div>
                 </div>
@@ -233,17 +233,18 @@
                         console.log(err);
                     })
             },
-            openModal(isNew, id) {
+            openModal(isNew, item) {
 
                 if (isNew == "new") {
                     this.isNew = true;
                     alert(this.isNew);
                     productModal.show();
-
                 } else if (isNew == "edit") {
                     this.isNew = false;
-                    alert(this.isNew);
+
+                    this.tempProduct = item;
                     productModal.show();
+
                 } else if (isNew == "delete") {
                     deleteModal.show();
                 }
