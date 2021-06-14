@@ -232,13 +232,15 @@
         },
         mounted() {
             const token = document.cookie.replace(/(?:(?:^|.*;\s*)hexToken\s*=\s*([^;]*).*$)|^.*$/, '$1');
-            console.log("token", token);
+
+            if (!token) {
+                alert("您尚未登入，請重新登入!")
+                window.location = `index.html`;
+            }
 
             axios.defaults.headers.common['Authorization'] = token;
-
+            myModal = new bootstrap.Modal(document.querySelector('#modal'));
             this.getData();
-            myModal = new bootstrap.Modal(document.querySelector('#modal'))
-            console.log("初始化");
         }
     }).mount("#app ");
 </script>
