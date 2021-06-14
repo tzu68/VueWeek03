@@ -171,9 +171,7 @@
                     deleteModal.show();
                 }
             },
-            upProductData() {
 
-            },
 
         },
         mounted() {
@@ -187,7 +185,7 @@
             //只需要打一次，以後只要有請求就會自動帶入
             axios.defaults.headers.common['Authorization'] = token;
 
-            deleteModal = new bootstrap.Modal(document.querySelector('#deleteModal'));
+            delProductModal = new bootstrap.Modal(document.querySelector('#delProductModal'));
             this.getData();
         }
     }).mount("#app ");
