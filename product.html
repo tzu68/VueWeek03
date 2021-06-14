@@ -168,10 +168,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary">取消</button>
-                        <button type="button" class="btn btn-primary">            
-                            <span v-if="isNew">確認新增</span>
-                            <span v-else="isNew">確認編輯</span>
-                        </button>
+                        <button type="button" class="btn btn-primary">確認</button>
                     </div>
                 </div>
 
@@ -253,13 +250,6 @@
             },
             closeModal() {
 
-                if (isNew == "new") {
-                    productModal.hide();
-                } else if (isNew == "edit") {
-                    productModal.hide();
-                } else if (isNew == "delete") {
-                    deleteModal.hide();
-                }
             },
             addtempProduct() {
                 const newItem = {
