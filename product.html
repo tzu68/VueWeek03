@@ -95,16 +95,16 @@
 
         <!-- Modal開始 -->
 
-        <div class="modal fade " id="productModal" tabindex="-1" aria-labelledby="productModalLabel" aria-hidden="true">
+        <div class="modal fade" ref="productModal" id="productModal" tabindex="-1" aria-labelledby="productModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered modal-xl">
                 <div class="modal-content mx-auto w-100">
                     <div class="modal-header">
                         <h5 class="modal-title" id="productModalLabel">
                             <span v-if="isNew">新增產品內容</span>
-                            <span v-else="isNew">編輯產品內容</span>
+                            <span v-else>編輯產品內容</span>
                         </h5>
                     </div>
-                    <div class="modal-body container-fluid row w-100">
+                    <div class="modal-body row">
 
                         <div class="col-12 col-lg-4">
                             <ul>
@@ -176,7 +176,7 @@
 
         </div>
 
-        <div class="modal fade " id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+        <div class="modal fade " ref="delProductModal" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered modal-sm">
                 <div class="modal-content">
                     <div class="modal-header">
