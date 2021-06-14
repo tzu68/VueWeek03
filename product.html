@@ -242,10 +242,9 @@
                     productModal.show();
                 } else if (isNew == "edit") {
 
-                    this.tempProduct = item;
+                    this.tempProduct = {...item
+                    };
                     this.isNew = false;
-                    console.log("item", item);
-                    console.log("tempProduct", this.tempProduct);
 
                     productModal.show();
 
