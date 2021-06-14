@@ -240,12 +240,14 @@
 
                 if (isNew == "new") {
                     this.isNew = true;
+                    alert(this.isNew);
                     productModal.show();
+
                 } else if (isNew == "edit") {
                     this.isNew = false;
+                    alert(this.isNew);
                     productModal.show();
                 } else if (isNew == "delete") {
-                    this.isNew = false;
                     deleteModal.show();
                 }
             },
