@@ -112,12 +112,17 @@
                                 <li><img class="img-fluid" :src="tempProduct.imageUrl" alt=""></li>
 
                             </ul>
+                            <hr class="w-75">
+                            <p>多圖新增</p>
 
-                            <ul v-for="(item,i) in tempProduct.imagesUrl" :key="i">
-                                <li><label for="">圖片網址</label></li>
-                                <li><input class="w-100" type="text" v-model="tempProduct.imageUrl"></li>
-                                <li><img class="img-fluid" :src="tempProduct.imageUrl" alt=""></li>
-                            </ul>
+                            <div v-if="Array.isArray(tempProduct.imagesUrl)">
+                                <ul v-for="(item,i) in tempProduct.imagesUrl" :key="i">
+                                    <li><label for="">圖片位置</label></li>
+                                    <li><input class="w-100" type="text" v-model="tempProduct.imageUrl"></li>
+                                    <li><img class="img-fluid" :src="tempProduct.imageUrl" alt=""></li>
+                                </ul>
+                            </div>
+
                         </div>
 
                         <div class="col-12 col-lg-8">
