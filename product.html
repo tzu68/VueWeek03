@@ -187,11 +187,17 @@
             },
             delProduct() {
                 console.log(this.tempProduct.id);
-                // axios.delete(`${this.website.url}/api/${this.website.path}/admin/product/${this.tempProduct.id}`)
-                // .then(res => {
-                //     console.log(res);
-                //     app.getData();
-                // })
+                axios.delete(`${this.website.url}/api/${this.website.path}/admin/product/${this.tempProduct.id}`)
+                    .then(res => {
+                        if (res.data.success) {
+                            this.getData();
+                        } else {
+                            alert(res.data.message);
+                        }
+                    })
+                    .catch((err) => {
+                        console.log(err);
+                    })
 
                 delProductModal.hide();
             },
