@@ -113,8 +113,6 @@
 
                             </ul>
 
-
-
                             <ul v-for="(item,i) in tempProduct.imagesUrl" :key="i">
                                 <li><label for="">圖片網址</label></li>
                                 <li><input class="w-100" type="text" v-model="tempProduct.imageUrl"></li>
@@ -164,7 +162,10 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal" @click="closeModal('product')">取消</button>
-                            <button type="button" class="btn btn-outline-primary">確認刪除</button>
+                            <button type="button" class="btn btn-outline-primary" @click="updateProduct">
+                                <span v-if="isNew">確認新增</span>
+                                <span v-else>確認編輯</span>
+                            </button>
                         </div>
 
 
@@ -255,7 +256,6 @@
                     };
                     delProductModal.show();
                 }
-
             },
             closeModal(closeWhichModal) {
 
