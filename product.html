@@ -156,7 +156,8 @@
                             </div>
                             <div class="row">
                                 <div class="col">
-                                    <input type="checkbox" name="" id="" v-model="tempProduct.is_enabled">是否啟用
+                                    <input type="checkbox" name="" id="is_enabled" v-model="tempProduct.is_enabled" :true-value="1" :false-value="0">
+                                    <label class="form-check-label" for="is_enabled">是否啟用</label>
                                 </div>
                             </div>
                         </div>
