@@ -24,7 +24,6 @@
 <body>
 
     <div id="app">
-        <loading v-model:active="visible" :can-cancel="true"></loading>
 
         <div class="row mt-5">
             <div class="col-12 col-lg-8 mx-auto  text-center">
@@ -235,9 +234,6 @@
 
 </body>
 <script>
-    import Loading from 'vue-loading-overlay';
-    import 'vue-loading-overlay/dist/vue-loading.css';
-
     const obj = Vue.createApp({
         data() {
             return {
@@ -344,9 +340,7 @@
                 this.tempProduct.imagesUrl = [];
                 this.tempProduct.imagesUrl.push('');
             },
-            openLoading() {
-                this.visible = true;
-            },
+
 
         },
         mounted() {
@@ -368,12 +362,9 @@
                 keyboard: false
             });
 
-            Loading: VueLoading;
-
             this.getData();
         }
     }).mount("#app ");
-    app.use(VueLoading);
 </script>
 
 </html>
