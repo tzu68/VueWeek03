@@ -265,14 +265,20 @@
                     delProductModal.hide()
                 }
             },
-            addProduct() {
+            updateProduct() {
+                let url = `${this.website.url}/api/${this.website.path}/admin/product`;
+                let http = 'post';
 
-                const url = `${this.website.url}/api/${this.website.path}/admin/product`;
+                if (!this.isNew) {
+                    url = `${this.website.url}/api/${this.website.path}/admin/product/${this.tempProduct.id}`;
+                    http = 'put';
+                }
 
-                axios.post(url, this.tempProduct)
+                axios[http](url, {
+                        data: this.tempProduct
+                    })
                     .then(res => {
                         if (res.data.success) {
-
                             alert(res.data.message);
                             this.getData();
                         } else {
