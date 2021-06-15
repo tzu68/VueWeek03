@@ -136,11 +136,11 @@
                                 </div>
                                 <div class="col-6 my-1">
                                     <label for="">原價</label>
-                                    <input type="Number" class="w-100" v-model="tempProduct.origin_price">
+                                    <input type="Number" class="w-100" v-model.number="tempProduct.origin_price" min="0">
                                 </div>
                                 <div class="col-6 my-1">
                                     <label for="">售價</label>
-                                    <input type="Number" class="w-100" v-model="tempProduct.price">
+                                    <input type="Number" class="w-100" v-model.number="tempProduct.price" min="0">
                                 </div>
                             </div>
                             <hr>
