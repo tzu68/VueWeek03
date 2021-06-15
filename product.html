@@ -101,17 +101,17 @@
                         <h5 id="delProductModalLabel" class="modal-title text-white">
                             <span>刪除產品</span>
                         </h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" @click="closeModal(delete)"></button>
                     </div>
                     <div class="modal-body">
                         是否刪除
                         <strong class="text-danger">{{ tempProduct.title }}</strong> 商品(刪除後將無法恢復)。
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+                        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal" @click="closeModal(delete)">
                 取消
               </button>
-                        <button type="button" class="btn btn-outline-primary" @click="delProduct">
+                        <button type="button" class="btn btn-outline-primary" @click="closeModal(delete)">
                 確認刪除
               </button>
                     </div>
@@ -169,6 +169,14 @@
 
                 } else if (isNew === 'delete') {
                     delProductModal.show()
+                }
+            },
+            closeModal(isDelete) {
+
+                if (isDelete === "delete") {
+                    productModal.show();
+                } else {
+                    productModal.show();
                 }
             },
             delProduct() {
