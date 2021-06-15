@@ -132,64 +132,64 @@
                                 </div>
 
                                 <div v-else>
-                                    <button class="my-2 class=" btn btn-outline-secondary btn-sm d-block w-100 " @click="tempProduct.imagesUrl.pop() ">
+                                    <button class="my-2 btn btn-outline-secondary btn-sm d-block w-100" @click="tempProduct.imagesUrl.pop()">
                                       刪除圖片
                                     </button>
                                 </div>
                             </div>
                             <div v-else>
-                                <button class="my-5 " class="btn btn-outline-primary btn-sm d-block w-100 " @click="createImages ">
+                                <button class="my-5" class="btn btn-outline-primary btn-sm d-block w-100" @click="createImages">
                                   新增圖片
                                 </button>
                             </div>
 
                         </div>
 
-                        <div class="col-12 col-lg-8 ">
-                            <div class="row ">
-                                <div class="col-12 my-1 ">
-                                    <label class="d-block " for=" ">名稱</label>
-                                    <input type="text " class="w-100 " v-model="tempProduct.title ">
+                        <div class="col-12 col-lg-8">
+                            <div class="row">
+                                <div class="col-12 my-1">
+                                    <label class="d-block" for="">名稱</label>
+                                    <input type="text" class="w-100" v-model="tempProduct.title">
                                 </div>
-                                <div class="col-6 my-1 ">
-                                    <label for=" ">分類</label>
-                                    <input type="text " class="w-100 " v-model="tempProduct.category ">
+                                <div class="col-6 my-1">
+                                    <label for="">分類</label>
+                                    <input type="text" class="w-100" v-model="tempProduct.category">
                                 </div>
-                                <div class="col-6 my-1 ">
-                                    <label for=" ">單位</label>
-                                    <input type="text " class="w-100 " v-model="tempProduct.unit ">
+                                <div class="col-6 my-1">
+                                    <label for="">單位</label>
+                                    <input type="text" class="w-100" v-model="tempProduct.unit">
                                 </div>
-                                <div class="col-6 my-1 ">
-                                    <label for=" ">原價</label>
-                                    <input type="Number " class="w-100 " v-model.number="tempProduct.origin_price " min="0 ">
+                                <div class="col-6 my-1">
+                                    <label for="">原價</label>
+                                    <input type="Number" class="w-100" v-model.number="tempProduct.origin_price" min="0">
                                 </div>
-                                <div class="col-6 my-1 ">
-                                    <label for=" ">售價</label>
-                                    <input type="Number " class="w-100 " v-model.number="tempProduct.price " min="0 ">
+                                <div class="col-6 my-1">
+                                    <label for="">售價</label>
+                                    <input type="Number" class="w-100" v-model.number="tempProduct.price" min="0">
                                 </div>
                             </div>
                             <hr>
-                            <div class="row ">
-                                <div class="col-12 my-1 ">
-                                    <label class="d-block " for=" ">產品描述</label>
-                                    <textarea name=" " id=" " cols="60 " rows="3 " v-model="tempProduct.description "></textarea>
+                            <div class="row">
+                                <div class="col-12 my-1">
+                                    <label class="d-block" for="">產品描述</label>
+                                    <textarea name="" id="" cols="60" rows="3" v-model="tempProduct.description"></textarea>
                                 </div>
-                                <div class="col-12 my-1 ">
-                                    <label class="d-block " for=" ">說明內容</label>
-                                    <textarea name=" " id=" " cols="60 " rows="3 " v-model="tempProduct.content "></textarea>
+                                <div class="col-12 my-1">
+                                    <label class="d-block" for="">說明內容</label>
+                                    <textarea name="" id="" cols="60" rows="3" v-model="tempProduct.content"></textarea>
                                 </div>
                             </div>
-                            <div class="row ">
-                                <div class="col ">
-                                    <input type="checkbox " name=" " id="is_enabled " v-model="tempProduct.is_enabled " :true-value="1 " :false-value="0 ">
-                                    <label class="form-check-label " for="is_enabled ">是否啟用</label>
+                            <div class="row">
+                                <div class="col">
+                                    <input type="checkbox" name="" id="is_enabled" v-model="tempProduct.is_enabled" :true-value="1" :false-value="0">
+                                    <label class="form-check-label" for="is_enabled">是否啟用</label>
                                 </div>
                             </div>
                         </div>
-                        <div class="modal-footer ">
-                            <button type="button " class="btn btn-outline-secondary " data-bs-dismiss="modal " @click="closeModal( 'product') ">取消</button>
-                            <button type="button " class="btn btn-outline-primary " @click="updateProduct ">
-                                <span v-if="isNew ">確認新增</span>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal" @click="closeModal('product')">取消</button>
+                            <button type="button" class="btn btn-outline-primary" @click="updateProduct">
+                                <span v-if="isNew">確認新增</span>
                                 <span v-else>確認編輯</span>
                             </button>
                         </div>
@@ -200,24 +200,24 @@
             </div>
         </div>
 
-        <div id="delProductModal " ref="delProductModal " class="modal fade " tabindex="-1 " aria-labelledby="delProductModalLabel " aria-hidden="true ">
-            <div class="modal-dialog ">
-                <div class="modal-content ">
-                    <div class="modal-header bg-secondary text-white ">
-                        <h5 id="delProductModalLabel " class="modal-title text-white ">
+        <div id="delProductModal" ref="delProductModal" class="modal fade" tabindex="-1" aria-labelledby="delProductModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header bg-secondary text-white">
+                        <h5 id="delProductModalLabel" class="modal-title text-white">
                             <span>刪除產品</span>
                         </h5>
-                        <button type="button " class="btn-close " data-bs-dismiss="modal " aria-label="Close " @click="closeModal( 'delete') "></button>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" @click="closeModal('delete')"></button>
                     </div>
-                    <div class="modal-body ">
+                    <div class="modal-body">
                         是否刪除
-                        <strong class="text-danger ">{{ tempProduct.title }}</strong> 商品(刪除後將無法恢復)。
+                        <strong class="text-danger">{{ tempProduct.title }}</strong> 商品(刪除後將無法恢復)。
                     </div>
-                    <div class="modal-footer ">
-                        <button type="button " class="btn btn-outline-secondary " data-bs-dismiss="modal " @click="closeModal( 'delete') ">
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal" @click="closeModal('delete')">
                 取消
               </button>
-                        <button type="button " class="btn btn-outline-primary " @click="delProduct() ">
+                        <button type="button" class="btn btn-outline-primary" @click="delProduct()">
                 確認刪除
               </button>
                     </div>
@@ -265,14 +265,14 @@
             },
             openModal(isNew, item) {
 
-                if (isNew === "new ") {
+                if (isNew === "new") {
                     this.isNew = true;
                     this.tempProduct = {
                         imagesUrl: [],
                     }
                     productModal.show();
 
-                } else if (isNew === "edit ") {
+                } else if (isNew === "edit") {
                     this.isNew = false;
                     this.tempProduct = {...item
                     };
@@ -338,7 +338,7 @@
             const token = document.cookie.replace(/(?:(?:^|.*;\s*)hexToken\s*=\s*([^;]*).*$)|^.*$/, '$1');
 
             if (!token) {
-                alert("您尚未登入，請重新登入! ")
+                alert("您尚未登入，請重新登入!")
                 window.location = `index.html`;
             }
 
