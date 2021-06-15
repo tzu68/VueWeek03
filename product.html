@@ -118,7 +118,7 @@
                                 <ul v-for="(item,key) in tempProduct.imagesUrl" :key="key">
                                     <li><label for="">圖片位置</label></li>
                                     <li><input class="w-100" type="text" v-model="tempProduct.imageUrl[key]" placeholder="請輸入圖片網址"></li>
-                                    <li><img class="img-fluid" :src="tempProduct.imageUrl[i]" alt=""></li>
+                                    <li><img class="img-fluid" :src="tempProduct.imageUrl[key]" alt=""></li>
                                 </ul>
                                 <div v-if="!tempProduct.imagesUrl.length || tempProduct.imagesUrl[tempProduct.imagesUrl.length - 1]">
                                     <button class="btn btn-outline-primary btn-sm d-block w-100" @click="tempProduct.imagesUrl.push('')">
