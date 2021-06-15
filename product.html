@@ -157,8 +157,6 @@
             },
             openModal(isNew, item) {
 
-
-
                 console.log(this.tempProduct);
 
                 if (isNew == "new") {
@@ -192,7 +190,7 @@
                 axios.delete(url)
                     .then((res) => {
                         if (res.data.success) {
-                            alert(response.data.message);
+                            alert(res.data.message);
                             delProductModal.hide();
                             this.getData();
                         } else {
