@@ -190,8 +190,8 @@
                 axios.delete(url)
                     .then((res) => {
                         if (res.data.success) {
-                            alert(res.data.message);
                             delProductModal.hide();
+                            alert(res.data.message);
                             this.getData();
                         } else {
                             alert(res.data.message);
