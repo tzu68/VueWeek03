@@ -239,11 +239,14 @@
 
                 if (isNew == "new") {
                     this.isNew = true;
-                    // productModal.show();
+                    tempProduct = {
+                        imagesUrl: [],
+                    }
+                    productModal.show();
                 } else
                 if (isNew == "edit") {
                     this.isNew = false;
-                    // productModal.show();
+                    productModal.show();
                 } else if (isNew === 'delete') {
                     this.tempProduct = {...item
                     };
