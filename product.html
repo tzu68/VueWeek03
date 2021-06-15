@@ -94,6 +94,82 @@
         </div>
 
         <!-- Modal開始 -->
+        <div id="productModal" ref="productModal" class="modal fade" tabindex="-1" aria-labelledby="productModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="productModalLabel">
+                            <span v-if="isNew">新增產品內容</span>
+                            <span v-else>編輯產品內容</span>
+                        </h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body row">
+
+                        <div class="col-12 col-lg-4">
+                            <ul>
+                                <li><label for="">主要圖片位置</label></li>
+                                <li><input class="w-100" type="text" v-model="tempProduct.imageUrl" placeholder="請輸入圖片網址"></li>
+                                <li><img class="img-fluid" :src="tempProduct.imageUrl" alt=""></li>
+
+                            </ul>
+
+
+
+                            <ul v-for="(item,i) in tempProduct.imagesUrl" :key="i">
+                                <li><label for="">圖片網址</label></li>
+                                <li><input class="w-100" type="text" v-model="tempProduct.imageUrl"></li>
+                                <li><img class="img-fluid" :src="tempProduct.imageUrl" alt=""></li>
+                            </ul>
+                        </div>
+
+                        <div class="col-12 col-lg-8">
+                            <div class="row">
+                                <div class="col-12 my-1">
+                                    <label class="d-block" for="">名稱</label>
+                                    <input type="text" class="w-100" v-model="tempProduct.title">
+                                </div>
+                                <div class="col-6 my-1">
+                                    <label for="">分類</label>
+                                    <input type="text" class="w-100" v-model="tempProduct.category">
+                                </div>
+                                <div class="col-6 my-1">
+                                    <label for="">單位</label>
+                                    <input type="text" class="w-100" v-model="tempProduct.unit">
+                                </div>
+                                <div class="col-6 my-1">
+                                    <label for="">原價</label>
+                                    <input type="Number" class="w-100" v-model="tempProduct.origin_price">
+                                </div>
+                                <div class="col-6 my-1">
+                                    <label for="">售價</label>
+                                    <input type="Number" class="w-100" v-model="tempProduct.price">
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-12 my-1">
+                                    <label class="d-block" for="">產品描述</label>
+                                    <textarea name="" id="" cols="60" rows="3" v-model="tempProduct.description"></textarea>
+                                </div>
+                                <div class="col-12 my-1">
+                                    <label class="d-block" for="">說明內容</label>
+                                    <textarea name="" id="" cols="60" rows="3" v-model="tempProduct.content"></textarea>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <input type="checkbox" name="" id="" v-model="tempProduct.is_enabled">是否啟用
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <div id="delProductModal" ref="delProductModal" class="modal fade" tabindex="-1" aria-labelledby="delProductModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -186,7 +262,22 @@
                 }
             },
             addProduct() {
-                const url = `${this.website.url}/api/${this.website.path}/admin/product/${this.tempProduct.id}`;
+
+                const url = `${this.website.url}/api/${this.website.path}/admin/product`;
+
+                axios.post(url, this.tempProduct)
+                    .then(res => {
+                        if (res.data.success) {
+
+                            alert(res.data.message);
+                            this.getData();
+                        } else {
+                            alert(res.data.message);
+                        }
+
+                    }).catch((err) => {
+                        console.log(err);
+                    })
             },
             delProduct() {
                 const url = `${this.website.url}/api/${this.website.path}/admin/product/${this.tempProduct.id}`;
@@ -221,6 +312,11 @@
             delProductModal = new bootstrap.Modal(document.getElementById('delProductModal'), {
                 keyboard: false
             });
+
+            productModal = new bootstrap.Modal(document.getElementById('productModal'), {
+                keyboard: false
+            });
+
             this.getData();
         }
     }).mount("#app ");
