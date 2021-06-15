@@ -187,9 +187,13 @@
             },
             delProduct() {
                 console.log(this.tempProduct.id);
-                axios.delete(`${this.website.url}/api/${this.website.path}/admin/product/${this.tempProduct.id}`)
-                    .then(res => {
+                const url = `${this.website.url}/api/${this.website.path}/admin/product/${this.tempProduct.id}`;
+
+                axios.delete(url)
+                    .then((res) => {
                         if (res.data.success) {
+                            alert(response.data.message);
+                            delProductModal.hide();
                             this.getData();
                         } else {
                             alert(res.data.message);
@@ -199,7 +203,8 @@
                         console.log(err);
                     })
 
-                delProductModal.hide();
+
+
             },
 
         },
