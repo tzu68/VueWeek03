@@ -235,16 +235,17 @@
             },
             openModal(isNew, item) {
 
-                console.log(this.tempProduct);
+                console.log("開啟M");
 
-                if (isNew == "new") {
+                if (isNew === "new") {
                     this.isNew = true;
                     tempProduct = {
                         imagesUrl: [],
                     }
                     productModal.show();
+                    console.log("開啟產品列表");
                 } else
-                if (isNew == "edit") {
+                if (isNew === "edit") {
                     this.isNew = false;
                     productModal.show();
                 } else if (isNew === 'delete') {
