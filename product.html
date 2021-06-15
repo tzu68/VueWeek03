@@ -306,6 +306,7 @@
                     .then(res => {
                         if (res.data.success) {
                             alert(res.data.message);
+                            productModal.hide();
                             this.getData();
                         } else {
                             alert(res.data.message);
