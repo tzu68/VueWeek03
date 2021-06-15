@@ -142,7 +142,9 @@
         },
         methods: {
             getData() {
-                axios.get(`${this.website.url}/api/${this.website.path}/products`)
+                const url = `${this.website.url}/api/${this.website.path}/products`;
+
+                axios.get(url)
                     .then(res => {
                         if (res.data.success) {
                             this.products = JSON.parse(JSON.stringify(res.data.products));
@@ -183,8 +185,10 @@
                     delProductModal.hide()
                 }
             },
+            addProduct() {
+                const url = `${this.website.url}/api/${this.website.path}/admin/product/${this.tempProduct.id}`;
+            },
             delProduct() {
-                console.log(this.tempProduct.id);
                 const url = `${this.website.url}/api/${this.website.path}/admin/product/${this.tempProduct.id}`;
 
                 axios.delete(url)
@@ -200,9 +204,6 @@
                     .catch((err) => {
                         console.log(err);
                     })
-
-
-
             },
 
         },
