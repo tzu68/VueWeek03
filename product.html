@@ -111,7 +111,7 @@
                         <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal" @click="closeModal('delete')">
                 取消
               </button>
-                        <button type="button" class="btn btn-outline-primary" @click="closeModal('delete')">
+                        <button type="button" class="btn btn-outline-primary" @click="delProduct(item)">
                 確認刪除
               </button>
                     </div>
@@ -157,19 +157,24 @@
             },
             openModal(isNew, item) {
 
+                this.tempProduct = {
+                    ...item
+                };
+
+                console.log(this.tempProduct);
+
                 if (isNew == "new") {
                     this.isNew = true;
-
                     // productModal.show();
-                } else if (isNew == "edit") {
-
+                } else
+                if (isNew == "edit") {
                     this.isNew = false;
-
                     // productModal.show();
-
                 } else if (isNew === 'delete') {
                     delProductModal.show()
                 }
+
+
             },
             closeModal(isNew) {
 
@@ -181,8 +186,11 @@
                     delProductModal.hide()
                 }
             },
-            delProduct() {
+            delProduct(item) {
 
+
+
+                delProductModal.hide();
             },
 
         },
