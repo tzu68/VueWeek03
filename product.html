@@ -109,18 +109,27 @@
                             <ul>
                                 <li><label for="">主要圖片位置</label></li>
                                 <li><input class="w-100" type="text" v-model="tempProduct.imageUrl" placeholder="請輸入圖片網址"></li>
-                                <li><img class="img-fluid" :src="tempProduct.imageUrl[0]" alt=""></li>
-
+                                <li><img class="img-fluid" :src="tempProduct.imageUrl" alt=""></li>
                             </ul>
                             <hr class="w-100">
-                            <p>多圖新增</p>
+                            <h6>多圖新增</h6>
 
                             <div v-if="Array.isArray(tempProduct.imagesUrl)">
-                                <ul v-for="(item,i) in tempProduct.imagesUrl" :key="i">
+                                <ul v-for="(item,key) in tempProduct.imagesUrl" :key="key">
                                     <li><label for="">圖片位置</label></li>
-                                    <li><input class="w-100" type="text" v-model="tempProduct.imageUrl[item]"></li>
-                                    <li><img class="img-fluid" :src="tempProduct.imageUrl[item]" alt=""></li>
+                                    <li><input class="w-100" type="text" v-model="tempProduct.imageUrl[key]" placeholder="請輸入圖片網址"></li>
+                                    <li><img class="img-fluid" :src="tempProduct.imageUrl[i]" alt=""></li>
                                 </ul>
+                                <div v-if="!tempProduct.imagesUrl.length || tempProduct.imagesUrl[tempProduct.imagesUrl.length - 1]">
+                                    <button class="btn btn-outline-primary btn-sm d-block w-100" @click="tempProduct.imagesUrl.push('')">
+                                      新增圖片
+                                    </button>
+                                </div>
+                                <div v-else>
+                                    <button class="btn btn-outline-danger btn-sm d-block w-100" @click="tempProduct.imagesUrl.pop()">
+                                      刪除圖片
+                                    </button>
+                                </div>
                             </div>
 
                         </div>
