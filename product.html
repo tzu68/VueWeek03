@@ -106,11 +106,12 @@
                     <div class="modal-body row">
 
                         <div class="col-12 col-lg-4">
-                            <ul>
-                                <li><label for="">主要圖片位置</label></li>
-                                <li><input class="w-100" type="text" v-model="tempProduct.imageUrl" placeholder="請輸入圖片網址"></li>
-                                <li><img class="img-fluid" :src="tempProduct.imageUrl" alt=""></li>
-                            </ul>
+                            <div class="form-group">
+                                <label for="imageUrl">主要圖片位置</label>
+                                <input class="w-100" type="text" v-model="tempProduct.imageUrl" placeholder="請輸入圖片網址">
+                                <img class="img-fluid" :src="tempProduct.imageUrl" alt="">
+                            </div>
+
                             <hr class="w-100">
                             <h5 class="text-center my-2">多圖新增</h5>
 
@@ -118,9 +119,10 @@
                                 <div v-for="(item,key) in tempProduct.imagesUrl" :key="key">
                                     <div class="form-group">
                                         <label for="imagesUrl">圖片位置</label>
-                                        <input class="w-100" type="text" v-model="tempProduct.imageUrl[key]" placeholder="請輸入圖片網址">
+                                        <input class="w-100" type="text" v-model="tempProduct.imagesUrl[key]" placeholder="請輸入圖片網址">
+                                        <img class="img-fluid" :src="tempProduct.imagesUrl[key]" alt="">
                                     </div>
-                                    <img class="img-fluid" :src="tempProduct.imageUrl[key]" alt="">
+
                                 </div>
 
                                 <div v-if="!tempProduct.imagesUrl.length || tempProduct.imagesUrl[tempProduct.imagesUrl.length - 1]">
