@@ -102,7 +102,7 @@
                             <span v-if="isNew">新增產品內容</span>
                             <span v-else>編輯產品內容</span>
                         </h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" @click="closeModal('product')"></button>
                     </div>
                     <div class="modal-body row">
 
@@ -162,6 +162,14 @@
                                     <input type="checkbox" name="" id="" v-model="tempProduct.is_enabled">是否啟用
                                 </div>
                             </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal" @click="closeModal('product')">
+                    取消
+                  </button>
+                            <button type="button" class="btn btn-outline-primary">
+                    確認刪除
+                  </button>
                         </div>
 
 
@@ -235,22 +243,18 @@
             },
             openModal(isNew, item) {
 
-                console.log("開啟M");
-
                 if (isNew === "new") {
                     this.isNew = true;
                     tempProduct = {
                         imagesUrl: [],
                     }
                     productModal.show();
-                    console.log("開啟產品列表");
-                } else
-                if (isNew === "edit") {
+
+                } else if (isNew === "edit") {
                     this.isNew = false;
                     tempProduct = {
                         ...item
                     };
-
                     productModal.show();
                 } else if (isNew === 'delete') {
                     this.tempProduct = {...item
@@ -259,13 +263,11 @@
                 }
 
             },
-            closeModal(isNew) {
+            closeModal(closeWhichModal) {
 
-                if (isNew === "new") {
-                    // productModal.hide();
-                } else if (isNew === "edit") {
-                    // productModal.hide();
-                } else if (isNew === 'delete') {
+                if (closeWhichModal === 'product') {
+                    productModal.hide();
+                } else if (closeWhichModal === 'delete') {
                     delProductModal.hide()
                 }
             },
