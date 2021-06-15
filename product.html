@@ -112,19 +112,23 @@
                                 <li><img class="img-fluid" :src="tempProduct.imageUrl" alt=""></li>
                             </ul>
                             <hr class="w-100">
-                            <h6>多圖新增</h6>
+                            <h5 class="text-center my-2">多圖新增</h5>
 
                             <div v-if="Array.isArray(tempProduct.imagesUrl)">
-                                <ul v-for="(item,key) in tempProduct.imagesUrl" :key="key">
-                                    <li><label for="">圖片位置</label></li>
-                                    <li><input class="w-100" type="text" v-model="tempProduct.imageUrl[key]" placeholder="請輸入圖片網址"></li>
-                                    <li><img class="img-fluid" :src="tempProduct.imageUrl[key]" alt=""></li>
-                                </ul>
+                                <div v-for="(item,key) in tempProduct.imagesUrl" :key="key">
+                                    <div class="form-group">
+                                        <label for="imagesUrl">圖片位置</label>
+                                        <input class="w-100" type="text" v-model="tempProduct.imageUrl[key]" placeholder="請輸入圖片網址">
+                                    </div>
+                                    <img class="img-fluid" :src="tempProduct.imageUrl[key]" alt="">
+                                </div>
+
                                 <div v-if="!tempProduct.imagesUrl.length || tempProduct.imagesUrl[tempProduct.imagesUrl.length - 1]">
                                     <button class="btn btn-outline-primary btn-sm d-block w-100" @click="tempProduct.imagesUrl.push('')">
                                       新增圖片
                                     </button>
                                 </div>
+
                                 <div v-else>
                                     <button class="btn btn-outline-danger btn-sm d-block w-100" @click="tempProduct.imagesUrl.pop()">
                                       刪除圖片
