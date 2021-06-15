@@ -95,7 +95,7 @@
 
         <!-- Modal開始 -->
         <div id="productModal" ref="productModal" class="modal fade" tabindex="-1" aria-labelledby="productModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
+            <div class="modal-dialog modal-xl">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title" id="productModalLabel">
@@ -164,12 +164,8 @@
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal" @click="closeModal('product')">
-                    取消
-                  </button>
-                            <button type="button" class="btn btn-outline-primary">
-                    確認刪除
-                  </button>
+                            <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal" @click="closeModal('product')">取消</button>
+                            <button type="button" class="btn btn-outline-primary">確認刪除</button>
                         </div>
 
 
@@ -179,7 +175,7 @@
         </div>
 
         <div id="delProductModal" ref="delProductModal" class="modal fade" tabindex="-1" aria-labelledby="delProductModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-xl">
+            <div class="modal-dialog modal-sm">
                 <div class="modal-content">
                     <div class="modal-header bg-secondary text-white">
                         <h5 id="delProductModalLabel" class="modal-title text-white">
