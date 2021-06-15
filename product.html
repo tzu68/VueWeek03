@@ -125,7 +125,7 @@
 
                                 </div>
 
-                                <div v-if="!tempProduct.imagesUrl.length || tempProduct.imagesUrl[tempProduct.imagesUrl.length - 1]">
+                                <div class="my-5" v-if="!tempProduct.imagesUrl.length || tempProduct.imagesUrl[tempProduct.imagesUrl.length - 1]">
                                     <button class="btn btn-outline-primary btn-sm d-block w-100" @click="tempProduct.imagesUrl.push('')">
                                       新增圖片
                                     </button>
@@ -138,7 +138,7 @@
                                 </div>
                             </div>
                             <div v-else>
-                                <button class="btn btn-outline-primary btn-sm d-block w-100" @click="createImages">
+                                <button class="my-5" class="btn btn-outline-primary btn-sm d-block w-100" @click="createImages">
                                   新增圖片
                                 </button>
                             </div>
