@@ -79,7 +79,6 @@
                                 </div>
                             </td>
 
-
                             <td class="col-2">
                                 <button type="button" class="btn btn-outline-secondary d-inline-block btn-sm mx-2" @click="openModal('edit',item)">編輯</button>
                                 <button type="button" class="btn btn-outline-primary d-inline-block btn-sm mx-2" @click="openModal('delete', item)">刪除</button>
@@ -241,15 +240,14 @@
 
                 if (isNew === "new") {
                     this.isNew = true;
-                    tempProduct = {
+                    this.tempProduct = {
                         imagesUrl: [],
                     }
                     productModal.show();
 
                 } else if (isNew === "edit") {
                     this.isNew = false;
-                    tempProduct = {
-                        ...item
+                    this.tempProduct = {...item
                     };
                     productModal.show();
                 } else if (isNew === 'delete') {
