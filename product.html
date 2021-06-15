@@ -157,9 +157,7 @@
             },
             openModal(isNew, item) {
 
-                this.tempProduct = {
-                    ...item
-                };
+
 
                 console.log(this.tempProduct);
 
@@ -171,9 +169,10 @@
                     this.isNew = false;
                     // productModal.show();
                 } else if (isNew === 'delete') {
-                    delProductModal.show()
+                    this.tempProduct = {...item
+                    };
+                    delProductModal.show();
                 }
-
 
             },
             closeModal(isNew) {
@@ -187,8 +186,12 @@
                 }
             },
             delProduct(item) {
-
-
+                console.log(this.tempProduct.id);
+                // axios.delete(`${this.website.url}/api/${this.website.path}/admin/product/${this.tempProduct.id}`)
+                // .then(res => {
+                //     console.log(res);
+                //     app.getData();
+                // })
 
                 delProductModal.hide();
             },
