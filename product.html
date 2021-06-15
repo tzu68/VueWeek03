@@ -111,7 +111,7 @@
                         <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal" @click="closeModal('delete')">
                 取消
               </button>
-                        <button type="button" class="btn btn-outline-primary" @click="delProduct(item)">
+                        <button type="button" class="btn btn-outline-primary" @click="delProduct()">
                 確認刪除
               </button>
                     </div>
@@ -185,7 +185,7 @@
                     delProductModal.hide()
                 }
             },
-            delProduct(item) {
+            delProduct() {
                 console.log(this.tempProduct.id);
                 // axios.delete(`${this.website.url}/api/${this.website.path}/admin/product/${this.tempProduct.id}`)
                 // .then(res => {
