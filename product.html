@@ -257,7 +257,7 @@
         },
         methods: {
             getData() {
-                const url = `${this.website.url}/api/${this.website.path}/products`;
+                const url = `${this.website.url}/api/${this.website.path}/admin/products/all`;
 
                 axios.get(url)
                     .then(res => {
